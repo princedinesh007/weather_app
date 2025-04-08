@@ -1,0 +1,77 @@
+
+<div class="container mt-3 text-center">
+    <input type="text" [(ngModel)]="this.city" class="input_text" placeholder="Enter city to check temperature">
+    <button class="btn btn-outline-success m-2"  (click)="getWeatherData(this.city)">Get Temperature</button>
+</div>
+
+<div class="container mt-4" [hidden]="!this.ishow">
+    <div class="row justify-content-center">
+      <div 
+        class="weather-card p-4 text-white" 
+        [ngStyle]="{ 'background-image': 'url(' + imageUrl + ')','opacity': '0.5'}">
+        
+        <div class="d-flex flex-column align-items-center mb-3">
+          <span class="title">Temperature</span> 
+          <h1>{{ WeatherData.temperature }}<sup>°C</sup></h1> 
+        </div>
+  
+        <div class="d-flex flex-row align-items-center justify-content-around mb-3">
+          <div class="d-flex flex-column align-items-center">
+            <img [src]="WeatherData.weather_icons[0]" alt="icon" height="60" width="60" class="rounded shadow">
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <span class="title">Feels Like</span> 
+            <h1>{{ WeatherData.feelslike }}<sup>°C</sup></h1> 
+          </div>
+        </div>
+  
+        <div class="d-flex flex-row justify-content-around">
+          <div class="d-flex flex-column align-items-center">
+            <span class="title">Humidity</span> 
+            <h6>{{ WeatherData.humidity }}%</h6> 
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <span class="title">Cloud Cover</span> 
+            <h6>{{ WeatherData.cloudcover }}%</h6> 
+          </div>
+        </div>
+  
+      </div>
+    </div>
+    <div class="card-container" >
+        <!-- Air Quality Card -->
+        <div class="card">
+          <h3>Air Quality</h3>
+          <p><strong>CO:</strong> {{this.WeatherData.air_quality.co}}</p>
+          <p><strong>NO2:</strong> {{this.WeatherData.air_quality.no2}}</p>
+          <p><strong>O3:</strong> {{this.WeatherData.air_quality.o3}}</p>
+          <p><strong>SO2:</strong> {{this.WeatherData.air_quality.so2}}</p>
+        </div>
+      
+        <!-- Sunrise and Moonrise Card -->
+        <div class="card">
+          <h3>Sun & Moon</h3>
+          <p><strong>Sunrise:</strong> {{WeatherData.astro.sunrise}}</p>
+          <p><strong>Moonrise:</strong> {{WeatherData.astro.moonrise}}</p>
+          <p><strong>Sunset:</strong> {{WeatherData.astro.sunset}}</p>
+          <p><strong>Moonset:</strong> {{WeatherData.astro.moonset}}</p>
+        </div>
+      
+        <!-- Wind Card -->
+        <div class="card">
+          <h3>Wind</h3>
+          <p><strong>Speed:</strong> {{this.WeatherData.wind_speed}}</p>
+          <p><strong>Degree:</strong> {{this.WeatherData.wind_degree}}</p>
+          <p><strong>Direction:</strong> {{this.WeatherData.wind_dir}}</p>
+        </div>
+      </div>
+  </div>
+
+  
+
+
+
+
+
+
+
