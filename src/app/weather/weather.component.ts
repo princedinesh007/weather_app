@@ -40,6 +40,7 @@ export class WeatherComponent {
     }
     this.weatherApi.getWeatherDetails(city).subscribe((res: any) => {
       this.WeatherData=res.current;
+      console.log(this.WeatherData)
       this.ishow=true;
       this.imageUrl=this.getWeatherImages(this.WeatherData.weather_code)
      
